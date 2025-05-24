@@ -3,6 +3,7 @@ import 'menu_helper.dart';
 import 'operaciones_basicas.dart';
 import 'utilidades.dart';
 import 'numeros_primos.dart';
+import 'pares_impares.dart';
 
 void main() {
   String? opcion;
@@ -61,7 +62,31 @@ void main() {
           }
           break;
         case '6':
-          print('Seleccionó: Números pares e impares en un rango');
+          print('\n->Seleccionó: Números pares e impares en un rango');
+          final inicio = leerNumeroDecimal('Ingrese el inicio del rango: ');
+          final fin = leerNumeroDecimal('Ingrese el fin del rango: ');
+          final pares = obtenerParesEnRango(inicio.toInt(), fin.toInt());
+          final impares = obtenerImparesEnRango(inicio.toInt(), fin.toInt());
+          if (pares.isEmpty) {
+            print(
+              'No se encontraron números pares en el rango $inicio a $fin.',
+            );
+          } else {
+            print(
+              'Números pares en el rango $inicio a $fin: ${pares.join(', ')}',
+            );
+            print('Total de números pares: ${pares.length}');
+          }
+          if (impares.isEmpty) {
+            print(
+              'No se encontraron números impares en el rango $inicio a $fin.',
+            );
+          } else {
+            print(
+              'Números impares en el rango $inicio a $fin: ${impares.join(', ')}',
+            );
+            print('Total de números impares: ${impares.length}');
+          }
           break;
         case '7':
           print('Seleccionó: Secuencia de Fibonacci');

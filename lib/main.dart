@@ -4,6 +4,7 @@ import 'operaciones_basicas.dart';
 import 'utilidades.dart';
 import 'numeros_primos.dart';
 import 'pares_impares.dart';
+import 'fibonacci.dart';
 
 void main() {
   String? opcion;
@@ -46,8 +47,8 @@ void main() {
           break;
         case '5':
           print('\n->Seleccionó: Números primos en un rango');
-          final inicio = leerNumeroDecimal('Ingrese el inicio del rango: ');
-          final fin = leerNumeroDecimal('Ingrese el fin del rango: ');
+          final inicio = leerNumeroEntero('Ingrese el inicio del rango: ');
+          final fin = leerNumeroEntero('Ingrese el fin del rango: ');
 
           final primos = obtenerPrimosEnRango(inicio.toInt(), fin.toInt());
           if (primos.isEmpty) {
@@ -89,7 +90,19 @@ void main() {
           }
           break;
         case '7':
-          print('Seleccionó: Secuencia de Fibonacci');
+          print('\n->Seleccionó: Secuencia de Fibonacci');
+          final cantFibonacci = leerNumeroEntero(
+            'Ingrese la cantidad de términos: ',
+          );
+          final secuenciaFibonacci = generarFibonacci(cantFibonacci.toInt());
+          if (secuenciaFibonacci.isEmpty) {
+            print('No se generó la secuencia de Fibonacci.');
+          } else {
+            print(
+              'Secuencia de Fibonacci con $cantFibonacci términos: ${secuenciaFibonacci.join(', ')}',
+            );
+            print('Total de términos: ${secuenciaFibonacci.length}');
+          }
           break;
         case '8':
           print('Seleccionó: Cálculo de áreas geométricas');

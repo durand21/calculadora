@@ -1,5 +1,6 @@
 import 'dart:io';
 
+// funcion para parsear un número decimal
 double leerNumeroDecimal(String mensaje) {
   stdout.write(mensaje);
   final entrada = stdin.readLineSync();

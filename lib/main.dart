@@ -47,10 +47,7 @@ void main() {
           print('\n->Seleccionó: Números primos en un rango');
           final inicio = leerNumeroDecimal('Ingrese el inicio del rango: ');
           final fin = leerNumeroDecimal('Ingrese el fin del rango: ');
-          if (inicio > fin) {
-            print('El inicio del rango no puede ser mayor que el final.');
-            continue;
-          }
+
           final primos = obtenerPrimosEnRango(inicio.toInt(), fin.toInt());
           if (primos.isEmpty) {
             print(
@@ -60,8 +57,8 @@ void main() {
             print(
               'Números primos en el rango $inicio a $fin: ${primos.join(', ')}',
             );
+            print('Total de números primos: ${primos.length}');
           }
-
           break;
         case '6':
           print('Seleccionó: Números pares e impares en un rango');

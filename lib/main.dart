@@ -2,6 +2,7 @@ import 'dart:io';
 import 'menu_helper.dart';
 import 'operaciones_basicas.dart';
 import 'utilidades.dart';
+import 'numeros_primos.dart';
 
 void main() {
   String? opcion;
@@ -43,7 +44,24 @@ void main() {
           print('Resultado: ${dividir(a, b)}');
           break;
         case '5':
-          print('Seleccionó: Números primos en un rango');
+          print('\n->Seleccionó: Números primos en un rango');
+          final inicio = leerNumeroDecimal('Ingrese el inicio del rango: ');
+          final fin = leerNumeroDecimal('Ingrese el fin del rango: ');
+          if (inicio > fin) {
+            print('El inicio del rango no puede ser mayor que el final.');
+            continue;
+          }
+          final primos = obtenerPrimosEnRango(inicio.toInt(), fin.toInt());
+          if (primos.isEmpty) {
+            print(
+              'No se encontraron números primos en el rango $inicio a $fin.',
+            );
+          } else {
+            print(
+              'Números primos en el rango $inicio a $fin: ${primos.join(', ')}',
+            );
+          }
+
           break;
         case '6':
           print('Seleccionó: Números pares e impares en un rango');

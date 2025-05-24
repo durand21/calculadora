@@ -5,6 +5,8 @@ import 'utilidades.dart';
 import 'numeros_primos.dart';
 import 'pares_impares.dart';
 import 'fibonacci.dart';
+import 'package:calculadora/areas_geometricas.dart';
+import 'areas_geometricas.dart';
 
 void main() {
   String? opcion;
@@ -105,10 +107,76 @@ void main() {
           }
           break;
         case '8':
-          print('Seleccionó: Cálculo de áreas geométricas');
+          print('''
+              --- CÁLCULO DE ÁREAS GEOMÉTRICAS ---
+              1. Círculo
+              2. Rectángulo
+              3. Triángulo
+              4. Cuadrado
+              5. Volver al menú principal
+              ''');
+
+          stdout.write('Seleccione una figura (1-5): ');
+          final figura = stdin.readLineSync();
+
+          try {
+            switch (figura) {
+              case '1':
+                print('--- Cálculo del área de un círculo ---');
+                final radio = leerNumeroDecimal(
+                  'Ingrese el radio del circulo: ',
+                );
+                final area = areaCirculo(radio);
+                print(
+                  'Área del círculo = ${area.toStringAsFixed(2)} unidades cuadradas',
+                );
+                break;
+              case '2':
+                print('--- Cálculo del área de un rectángulo ---');
+                final base = leerNumeroDecimal(
+                  'Ingrese la base del rectangulo: ',
+                );
+                final altura = leerNumeroDecimal(
+                  'Ingrese la altura del rectangulo: ',
+                );
+                final area = areaRectangulo(base, altura);
+                print(
+                  'Área del rectángulo = ${area.toStringAsFixed(2)} unidades cuadradas',
+                );
+                break;
+              case '3':
+                print('--- Cálculo del área de un triángulo ---');
+                final base = leerNumeroDecimal('Ingrese la base: ');
+                final altura = leerNumeroDecimal('Ingrese la altura: ');
+                final area = areaTriangulo(base, altura);
+                print(
+                  'Área del triángulo = ${area.toStringAsFixed(2)} unidades cuadradas',
+                );
+                break;
+              case '4':
+                print('--- Cálculo del área de un cuadrado ---');
+                final lado = leerNumeroDecimal(
+                  'Ingrese la longitud del lado: ',
+                );
+                final area = areaCuadrado(lado);
+                print(
+                  'Área del cuadrado = ${area.toStringAsFixed(2)} unidades cuadradas',
+                );
+                break;
+              case '5':
+                print('Volviendo al menú principal...');
+                break;
+              default:
+                print('Opción no válida en el submenú de áreas.');
+            }
+          } catch (error) {
+            print('Error: $error');
+          }
           break;
         case '9':
-          print('¡Gracias por usar la calculadora avanzada!');
+          print(
+            '¡Gracias por usar la calculadora avanzada! Atte. Rommen Durand',
+          );
           break;
         default:
           print('Opción no válida. Intente nuevamente.');
